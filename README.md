@@ -4,8 +4,7 @@ Terrain3D GitHub: https://github.com/TokisanGames/Terrain3D
 Terrain3D documentation: https://terrain3d.readthedocs.io/en/stable/
 
 # Disclaimer:
-## Terrain3D already has a official collision PR
-https://github.com/TokisanGames/Terrain3D/pull/699
+## Terrain3D already has a official [collision PR](https://github.com/TokisanGames/Terrain3D/pull/699)
 
 # Instancer Collision Generation
 This Node aims to extend the capabilities of the Terrain3D addon by TokinsanGames by generating collisions for Mesh Instances.
