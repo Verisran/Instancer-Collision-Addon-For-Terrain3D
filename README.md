@@ -3,12 +3,16 @@ Terrain3D GitHub: https://github.com/TokisanGames/Terrain3D
 
 Terrain3D documentation: https://terrain3d.readthedocs.io/en/stable/
 
+# Disclaimer:
+## Terrain3D already has a official collision PR
+https://github.com/TokisanGames/Terrain3D/pull/699
+
 # Instancer Collision Generation
 This Node aims to extend the capabilities of the Terrain3D addon by TokinsanGames by generating collisions for Mesh Instances.
 
 [Terrain3D Docs: Instancer - no-collision](https://terrain3d.readthedocs.io/en/stable/docs/instancer.html#no-collision)
 
-As described in the above part of the T3D documentation, currently there is no collision for instanced meshes, so I took it upon myself to create this for my own project.
+As described in the above part of the T3D documentation, as of version 1.0.1 there is no collision for instanced meshes, so I took it upon myself to create this for my own project.
 
 This single node works alongside the main Terrain3D node in your scene in a plug and play fashion, reading your asset mesh files and extracting the first CollisionShape in each asset that it finds.
 It uses the PhysicsServer3D to instance one giant static body that holds all the shapes instanced meshes with the appropriate tranforms to match their in game locations.
