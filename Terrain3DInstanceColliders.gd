@@ -10,8 +10,8 @@ class_name Terrain3DInstanceColliders
 @export_flags_3d_physics var collision_layer: int = 1
 
 @export_category("Options")
-##When true the generate_instances_collisions() method has to be manually called for the collisions to be generated.
-@export var manual_start: bool = true
+##When false the generate_instances_collisions() method has to be manually called for the collisions to be generated.
+@export var on_ready: bool = true
 ##Disbales instance collider generation
 @export var disable: bool = false
 ##Enables extra details to be printed to console for debugging purposes
@@ -29,7 +29,7 @@ func _ready() -> void:
 	if(Engine.is_editor_hint() or disable):
 		return
 	get_collider_shapes()
-	if(!manual_start):
+	if(on_ready):
 		generate_instance_collisions()
 	
 #Automatically clears the physics server
