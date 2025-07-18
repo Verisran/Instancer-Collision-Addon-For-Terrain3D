@@ -1,4 +1,4 @@
-## If unfamiliar with the Terrain3D addon, see First
+## If unfamiliar with the Terrain3D addon, see first
 Terrain3D GitHub: https://github.com/TokisanGames/Terrain3D
 
 Terrain3D documentation: https://terrain3d.readthedocs.io/en/stable/
@@ -25,4 +25,4 @@ Similar to how Terrain3D handles its Instancer LOD system, it reads the mesh ass
 #### Example Structure of mesh asset:
 <img width="1913" height="900" alt="T3DIC_example" src="https://github.com/user-attachments/assets/eb99311c-6f5e-4401-aafd-1c40171b9392" />
 
-And thats all thats needed!
+thats all!
