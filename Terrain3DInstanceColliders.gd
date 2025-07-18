@@ -1,5 +1,4 @@
 #Oskar D. - Terrain3D Instance Collision Addon Node - Godot 4.4.1 - MIT
-@tool
 extends Node3D
 class_name Terrain3DInstanceColliders
 
