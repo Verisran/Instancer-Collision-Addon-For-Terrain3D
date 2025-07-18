@@ -42,9 +42,6 @@ func _notification(what: int) -> void:
 			free_instance_collisions()
 #endregion
 
-#IDEAS:
-#Could assign colliders to region, region emits callback when its out of range that disables the collision
-
 #region Extract Colliders Methods
 ##Returns an array containing [Shape3D, CollisionShape3D.position] for each mesh asset
 ##It extracts the first found CollisionShape3D.shape from the mesh_list of the referenced Terrain3D node
@@ -62,6 +59,10 @@ func extract_collider_shapes()->Array[Array]:
 		#when collision shape child is found set shape and position offset, break out of loop on first match
 		for child in inst_asset.get_children():
 			if(child is CollisionShape3D):
+				if(child.shape == null):
+					if(debug_print):
+						print("Warining: CollisionShape3D found for asset '", inst_asset.name, "' but has no shape, please set it in the editor")
+					continue
 				shape = child.shape
 				position_offset = child.position
 				break
