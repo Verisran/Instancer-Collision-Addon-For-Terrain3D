@@ -1,4 +1,5 @@
 #Oskar D. - Terrain3D Instance Collision Addon Node - Godot 4.4.1 - MIT
+@tool
 extends Node3D
 class_name Terrain3DInstanceColliders
 
@@ -37,7 +38,6 @@ func _notification(what: int) -> void:
 		return
 	match what:
 		NOTIFICATION_PREDELETE:
-			#clear_shape_arrays() - already cleared in generate_instance_collisions
 			free_instance_collisions()
 #endregion
 
@@ -108,7 +108,7 @@ func get_collider_shapes()->void:
 ##Converts the region_location and position_in_region into global coordinates
 func get_instance_global_position(region_location: Vector2, position_in_region: Vector3)->Vector3:
 	var a: Vector2 = region_location*terrain.region_size
-	return position_in_region + Vector3(a.x, 0, a.y) 
+	return position_in_region + Vector3(a.x, 0, a.y) * terrain.vertex_spacing
 
 ##Clears the saved shapes and transforms
 func clear_shape_arrays()->void:
@@ -117,13 +117,12 @@ func clear_shape_arrays()->void:
 #endregion
 
 #region Physics Server Stuff
-
-#TODO split up into multiple body RIDs
 ##Creates the static physics body and assigns all collider shapes and transforms to the static body in the physics server 
 func generate_instance_collisions(space: RID = get_world_3d().space)->void:
 	if(disable):
 		return
 	static_instance_collider = PhysicsServer3D.body_create()
+	PhysicsServer3D.body_set_state(static_instance_collider,PhysicsServer3D.BODY_STATE_TRANSFORM, Transform3D.IDENTITY)
 	for i in range(shapes.size()):
 		PhysicsServer3D.body_add_shape(static_instance_collider, shapes[i].get_rid())
 		PhysicsServer3D.body_set_shape_transform(static_instance_collider, i, transforms[i])
@@ -138,5 +137,5 @@ func generate_instance_collisions(space: RID = get_world_3d().space)->void:
 func free_instance_collisions()->void:
 	if(static_instance_collider.is_valid()):
 		PhysicsServer3D.free_rid(static_instance_collider)
-	#Shape RIDs should be managed by the Shape3D resource they came from... Right?
+	
 #endregion
